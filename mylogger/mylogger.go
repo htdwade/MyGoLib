@@ -10,6 +10,7 @@ import (
 
 // 自定义一个日志库
 
+// LogLevel 日志类型
 type LogLevel uint16
 
 // Logger 接口
@@ -21,6 +22,7 @@ type Logger interface {
 	Fatal(format string, a ...interface{})
 }
 
+// 日志级别
 const (
 	UNKNOWN LogLevel = iota
 	DEBUG
