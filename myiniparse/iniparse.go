@@ -39,7 +39,7 @@ func loadIni(fileName string, data interface{}) (err error) {
 	// 1. 参数校验
 	// 1.1 传进来的data参数必须是指针类型(因为需要在函数中对其赋值修改)
 	t := reflect.TypeOf(data)
-	fmt.Println(t.Name(), t.Kind())
+	fmt.Printf("参数data的具体类型: %s, 底层类型: %s\n", t, t.Kind())
 	if t.Kind() != reflect.Ptr {
 		err = errors.New("data param should be a pointer")
 		return
@@ -90,7 +90,7 @@ func loadIni(fileName string, data interface{}) (err error) {
 				if sectionName == field.Tag.Get("ini") {
 					// 说明找到了对应的嵌套结构体，把字段名记下来
 					structName = field.Name
-					fmt.Printf("找到%s对应的嵌套结构体%s\n", sectionName, structName)
+					fmt.Printf("找到节%s对应的嵌套结构体%s\n", sectionName, structName)
 					break
 				}
 			}
